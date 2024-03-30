@@ -26,13 +26,13 @@ class EdAPI {
             const userActivity = await this.instance.get(`users/${userId}/profile/activity`,
             {
                 params: {
-                    courseId: courseId,
+                    courseID: courseId,
                     limit: limit,
                     offset: offset,
                     filter: filter
                 }
             });
-            return userActivity;
+            return userActivity.items ?? [];
         } catch (err) {
             console.log(err)
         }
@@ -47,7 +47,7 @@ class EdAPI {
                     sort: sort
                 }
             });
-            return allThreads;
+            return allThreads.threads;
         } catch (err) {
             console.log(err);
         }
@@ -56,7 +56,7 @@ class EdAPI {
     async getThread(threadId) {
         try {
             const thread = await this.instance.get(`threads/${threadId}`);
-            return thread;
+            return thread.thread;
         } catch (err) {
             console.log(err);
         }
@@ -64,7 +64,8 @@ class EdAPI {
 
     async getCourseThread(courseId, threadNumber) {
         try {
-
+            const thread = await this.instance.get(`courses/${courseId}/threads/${threadNumber}`);
+            return thread.thread;
         } catch (err) {
             console.log(err);
         }
