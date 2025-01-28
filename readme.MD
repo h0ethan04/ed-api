@@ -4,7 +4,7 @@ This JavaScript package is a rewrite of the Python EdAPI package, which can be f
 
 This package is a work in progress, but includes the following:
 - Authentication through an EdAPI token (accessible at https://edstem.org/us/settings/api-tokens)
-- 
+
 
 ## Installation:
 This package is designed to be used with a Node.js server -- make sure that you have installed Node.js from https://nodejs.org/en.
